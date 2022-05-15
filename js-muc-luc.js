@@ -1,34 +1,14 @@
-            function ChangeToSlug()
-            {
-                var title, slug;
- 
-                //Lấy text từ thẻ input title 
-                title = document.getElementById("title").value;
- 
-                //Đổi chữ hoa thành chữ thường
-                slug = title.toLowerCase();
- 
-                //Đổi ký tự có dấu thành không dấu
-                slug = slug.replace(/á|à|ả|ạ|ã|ă|ắ|ằ|ẳ|ẵ|ặ|â|ấ|ầ|ẩ|ẫ|ậ/gi, 'a');
-                slug = slug.replace(/é|è|ẻ|ẽ|ẹ|ê|ế|ề|ể|ễ|ệ/gi, 'e');
-                slug = slug.replace(/i|í|ì|ỉ|ĩ|ị/gi, 'i');
-                slug = slug.replace(/ó|ò|ỏ|õ|ọ|ô|ố|ồ|ổ|ỗ|ộ|ơ|ớ|ờ|ở|ỡ|ợ/gi, 'o');
-                slug = slug.replace(/ú|ù|ủ|ũ|ụ|ư|ứ|ừ|ử|ữ|ự/gi, 'u');
-                slug = slug.replace(/ý|ỳ|ỷ|ỹ|ỵ/gi, 'y');
-                slug = slug.replace(/đ/gi, 'd');
-                //Xóa các ký tự đặt biệt
-                slug = slug.replace(/\`|\~|\!|\@|\#|\||\$|\%|\^|\&|\*|\(|\)|\+|\=|\,|\.|\/|\?|\>|\<|\'|\"|\:|\;|_/gi, '');
-                //Đổi khoảng trắng thành ký tự gạch ngang
-                slug = slug.replace(/ /gi, "-");
-                //Đổi nhiều ký tự gạch ngang liên tiếp thành 1 ký tự gạch ngang
-                //Phòng trường hợp người nhập vào quá nhiều ký tự trắng
-                slug = slug.replace(/\-\-\-\-\-/gi, '-');
-                slug = slug.replace(/\-\-\-\-/gi, '-');
-                slug = slug.replace(/\-\-\-/gi, '-');
-                slug = slug.replace(/\-\-/gi, '-');
-                //Xóa các ký tự gạch ngang ở đầu và cuối
-                slug = '@' + slug + '@';
-                slug = slug.replace(/\@\-|\-\@|\@/gi, '');
-                //In slug ra textbox có id “slug”
-                document.getElementById('slug').value = slug;
-            }
+
+<b:if cond='data:view.isSingleItem'>
+
+  <script>
+
+    //<![CDATA[
+
+function shortCodeIfy(t,n,i){for(var e=t.split("$"),o=/[^{\}]+(?=})/g,c=0;c<e.length;c++){var a=e[c].split("=");if(a[0].trim()==n)return null!=(i=a[1]).match(o)&&String(i.match(o)).trim()}return!1}!function(t){"use strict";var n=function(n){return this.each(function(){var i,e,o=t(this),c=o.data(),a=[o],r=this.tagName,s=0;i=t.extend({content:"body",headings:"h1,h2,h3"},{content:c.toc||void 0,headings:c.tocHeadings||void 0},n),e=i.headings.split(","),t(i.content).find(i.headings).attr("id",function(n,i){return i||function(t){0===t.length&&(t="?");for(var n=t.replace(/\s+/g,"_"),i="",e=1;null!==document.getElementById(n+i);)i="_"+e++;return n+i}(t(this).text())}).each(function(){var n=t(this),i=t.map(e,function(t,i){return n.is(t)?i:void 0})[0];if(i>s){var o=a[0].children("li:last")[0];o&&a.unshift(t("<"+r+"/>").appendTo(o))}else a.splice(0,Math.min(s-i,Math.max(a.length-1,0)));t("<li/>").appendTo(a[0]).append(t("<a/>").text(n.text()).attr("href","#"+n.attr("id"))),s=i})})},i=t.fn.toc;t.fn.toc=n,t.fn.toc.noConflict=function(){return t.fn.toc=i,this},t(function(){n.call(t("[data-toc]"))})}(window.jQuery),$(".post-body b").each(function(){var t=$(this),n=t.text();n.toLowerCase().trim().match("{tocify}")&&(n=0!=shortCodeIfy(n,"title")?shortCodeIfy(n,"title"):"Table of Contents",t.replaceWith('<div class="tocify-wrap"><div class="tocify-inner"><a href="javascript:;" class="tocify-title" role="button" title="'+n+'">'+n+'</a><ol id="toc"></ol></div></div>'),$(".tocify-title").each(function(t){(t=$(this)).on("click",function(){t.toggleClass("is-expanded"),$("#toc").slideToggle(170)})}),$("#toc").toc({content:".post-body",headings:"h2,h3,h4"}),$("#toc li a").each(function(t){(t=$(this)).click(function(){return $("html,body").animate({scrollTop:$(t.attr("href")).offset().top-20},500),!1})}))});
+
+    //]]>
+
+  </script>
+
+</b:if>
